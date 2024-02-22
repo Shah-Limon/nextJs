@@ -1,0 +1,22 @@
+name: Auto Push
+
+on:
+  push:
+    branches:
+      - main  # Change this to your branch name if it's different
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "limon shah"
+        git config --global user.email "limon.working@gmail.com"
+        git add .
+        git commit -m "Automated commit $(date +%F-%T)"
+        git push
